@@ -267,11 +267,86 @@
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
     }
+
+    /* Interacción añadida: lectura, recetas desplegables y contacto. */
+    .brand-logo { background: #e6eee6; border: 1px solid rgba(32,57,47,.08); border-radius: 50%; }
+    .nav-links a[aria-current="location"]:not(.button) { color: var(--green-dark); text-decoration: underline; text-decoration-color: var(--gold); text-decoration-thickness: 2px; text-underline-offset: 6px; }
+    .mobile-menu-panel a[aria-current="location"] { color: var(--green-dark); background: var(--green-light); }
+    .reading-progress { position: absolute; inset: 0 0 auto; height: 3px; overflow: hidden; pointer-events: none; }
+    .reading-progress span { display: block; width: 0; height: 100%; background: linear-gradient(90deg, var(--green), #8ba374, var(--gold)); transform-origin: left center; }
+    .includes-star svg, .note-flower svg { width: 18px; height: 18px; }
+
+    .recipe-grid { align-items: start; }
+    .recipe-card { min-height: 0; padding: 0; overflow: hidden; border-color: rgba(32,57,47,.11); transition: transform .35s cubic-bezier(.2,.75,.25,1), box-shadow .35s ease, border-color .35s ease, background .35s ease; }
+    .recipe-card::before { position: absolute; z-index: 2; top: 0; left: 0; width: 0; height: 3px; background: linear-gradient(90deg, var(--green), #9caf82, var(--gold)); content: ""; transition: width .4s ease; }
+    .recipe-card:hover, .recipe-card:focus-within { transform: translateY(-6px); border-color: rgba(53,104,89,.25); box-shadow: 0 18px 38px rgba(36,72,61,.12); }
+    .recipe-card:hover::before, .recipe-card[open]::before { width: 100%; }
+    .recipe-card[open] { grid-column: 1 / -1; background: var(--white); box-shadow: 0 18px 42px rgba(36,72,61,.12); }
+    .recipe-summary { display: block; min-height: 205px; padding: 25px 23px 21px; cursor: pointer; list-style: none; }
+    .recipe-summary::-webkit-details-marker { display: none; }
+    .recipe-summary:focus-visible { outline: 3px solid var(--gold); outline-offset: -5px; border-radius: 16px; }
+    .recipe-card[open] .recipe-summary { min-height: 0; }
+    .recipe-card-top { margin-bottom: 16px; }
+    .recipe-symbol { background: #e6eee6; transition: transform .35s cubic-bezier(.2,.7,.25,1), background .35s ease; }
+    .recipe-card:hover .recipe-symbol, .recipe-card[open] .recipe-symbol { transform: rotate(-5deg) scale(1.08); background: #f5eac4; }
+    .recipe-card:hover .recipe-symbol svg { animation: icon-sway .42s ease both; }
+    .recipe-expand { display: inline-flex; align-items: center; gap: 7px; margin-top: 17px; color: var(--green); font-size: .75rem; font-weight: 700; }
+    .recipe-expand svg { width: 15px; height: 15px; transition: transform .25s ease; }
+    .recipe-card[open] .recipe-expand svg { transform: rotate(180deg); }
+    .expand-open { display: none; }
+    .recipe-card[open] .expand-closed { display: none; }
+    .recipe-card[open] .expand-open { display: inline; }
+    .recipe-extra { padding: 17px 23px 22px; border-top: 1px solid var(--line); animation: recipe-unfold .32s ease both; }
+    .recipe-extra-title { margin: 0 0 12px !important; color: var(--green-dark) !important; font-size: .82rem !important; font-weight: 700; }
+    .recipe-extra-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 28px; margin: 0; padding: 0; list-style: none; }
+    .recipe-extra-list li { position: relative; padding: 0 0 0 16px; color: var(--muted); font-size: .84rem; line-height: 1.5; }
+    .recipe-extra-list li::before { position: absolute; top: .65em; left: 0; width: 6px; height: 6px; border-radius: 50% 0 50% 50%; background: var(--sage, #6f8c70); content: ""; transform: rotate(-35deg); }
+
+    .checkout-direct { color: var(--gold); font-size: .76rem; font-weight: 600; text-align: center; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    .faq-list details p a { color: var(--green); font-weight: 700; text-underline-offset: 3px; }
+    .social-section { padding: 56px 0; background: #eff1e8; border-top: 1px solid rgba(32,57,47,.07); }
+    .social-content { display: flex; align-items: center; justify-content: space-between; gap: 38px; }
+    .social-copy { max-width: 440px; }
+    .social-copy .eyebrow { margin-bottom: 13px; }
+    .social-copy h2 { margin-bottom: 10px; font-size: clamp(1.8rem, 3vw, 2.6rem); }
+    .social-copy p { margin: 0; color: var(--muted); font-size: .94rem; }
+    .social-links { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 10px; max-width: 590px; }
+    .social-link { display: inline-flex; align-items: center; gap: 9px; min-height: 44px; padding: 0 14px; color: var(--green-dark); background: rgba(255,254,250,.72); border: 1px solid rgba(32,57,47,.12); border-radius: 999px; text-decoration: none; font-size: .82rem; font-weight: 600; transition: transform .22s ease, background .22s ease, box-shadow .22s ease, border-color .22s ease; }
+    .social-link:hover { transform: translateY(-3px); background: var(--white); border-color: rgba(53,104,89,.3); box-shadow: 0 10px 24px rgba(36,72,61,.1); }
+    .social-link svg { width: 18px; height: 18px; color: var(--green); }
+    .social-email { background: #fffefa; }
+    .back-to-top { position: fixed; z-index: 8; right: 24px; bottom: 24px; display: grid; width: 46px; height: 46px; place-items: center; color: var(--paper); background: var(--green-dark); border: 1px solid rgba(255,255,255,.22); border-radius: 50%; box-shadow: 0 10px 25px rgba(36,72,61,.2); opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(10px); transition: opacity .25s ease, transform .25s ease, visibility .25s ease; }
+    .back-to-top svg { width: 19px; height: 19px; }
+    .back-to-top.is-visible { opacity: 1; visibility: visible; pointer-events: auto; transform: translateY(0); }
+    @keyframes icon-sway { 0%,100% { rotate: 0deg; } 35% { rotate: -7deg; } 70% { rotate: 5deg; } }
+    @keyframes recipe-unfold { from { opacity: 0; translate: 0 -6px; } to { opacity: 1; translate: 0 0; } }
+    @media (max-width: 900px) {
+      .social-content { align-items: flex-start; flex-direction: column; gap: 22px; }
+      .social-links { justify-content: flex-start; max-width: 100%; }
+    }
+    @media (max-width: 680px) {
+      .recipe-summary { min-height: 0; padding: 19px 16px 17px; }
+      .recipe-card[open] { grid-column: 1 / -1; }
+      .recipe-extra { padding: 15px 16px 18px; }
+      .recipe-extra-list { grid-template-columns: 1fr; gap: 7px; }
+      .recipe-expand { margin-top: 13px; }
+      .social-section { padding: 46px 0 52px; }
+      .social-links { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); width: 100%; }
+      .social-link { justify-content: center; min-height: 46px; padding-inline: 9px; font-size: .76rem; }
+      .social-email { grid-column: 1 / -1; }
+      .back-to-top { display: none; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .recipe-card:hover, .recipe-card:focus-within, .social-link:hover { transform: none; }
+      .recipe-card:hover .recipe-symbol svg { animation: none; }
+      .recipe-extra { animation: none; }
+    }
   </style>
 </head>
 <body>
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
   <header class="site-header">
+    <div class="reading-progress" aria-hidden="true"><span></span></div>
     <div class="wrap nav">
       <a class="brand" href="#inicio" aria-label="Sabor sin Culpa, inicio">
         <img class="brand-logo" src="assets/logo-sabor-sin-culpa.png" alt="" aria-hidden="true" />
@@ -281,7 +356,8 @@
         <a href="#recetas">Las recetas</a>
         <a href="#menu">Menú de 5 días</a>
         <a href="#ingredientes">Guía de ingredientes</a>
-        <a class="button small" href="https://pay.hotmart.com/B108207858G?bid=1793346284700" target="_blank" rel="noopener noreferrer">Comprar · US$14</a>
+        <a href="#contacto">Contacto</a>
+        <a class="button small" href="https://go.hotmart.com/B108207858G?dp=1" target="_blank" rel="noopener noreferrer">Comprar · US$14</a>
       </nav>
       <details class="mobile-menu">
         <summary aria-label="Abrir menú de secciones"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span class="sr-only">Secciones</span></summary>
@@ -290,6 +366,7 @@
           <a href="#menu">Menú de 5 días</a>
           <a href="#ingredientes">Guía de ingredientes</a>
           <a href="#faq-title">Preguntas frecuentes</a>
+          <a href="#contacto">Redes y correo</a>
         </nav>
       </details>
     </div>
@@ -303,20 +380,20 @@
           <h1 id="hero-title">Comer rico.<br /><em>Siéntete bien.</em></h1>
           <p class="hero-lede">Recetas saludables, sencillas y llenas de color para acompañarte en la cocina de todos los días. Sin buscar la perfección: con sabor, variedad y disfrute.</p>
           <div class="hero-actions">
-            <a class="button" href="https://pay.hotmart.com/B108207858G?bid=1793346284700" target="_blank" rel="noopener noreferrer">
+            <a class="button" href="https://go.hotmart.com/B108207858G?dp=1" target="_blank" rel="noopener noreferrer">
               Quiero el recetario
               <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </a>
             <span class="hero-price">Precio en Hotmart <strong>US$14</strong></span>
           </div>
-          <p class="hero-includes"><span class="includes-star" aria-hidden="true">✦</span><span><strong>Incluye:</strong> 72 Recetas Saludables + Menú de 5 Días y Guía de Ingredientes</span></p>
+          <p class="hero-includes"><span class="includes-star" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M19.2 4.8C12 4.2 7 7.3 7 12.7c0 3.8 2.4 6.5 5.8 6.5 5.4 0 8.4-5.8 6.4-14.4Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M5 20c2.8-4.7 6.5-7.8 11.8-10.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span><span><strong>Incluye:</strong> 72 Recetas Saludables + Menú de 5 Días y Guía de Ingredientes</span></p>
         </div>
         <div class="hero-art" aria-label="Vista del libro y una mesa con platos saludables">
           <div class="hero-photo-frame">
             <img class="hero-photo" src="assets/hero-table.webp" alt="Mesa casera con platos coloridos, verduras, garbanzos, hierbas y cítricos" fetchpriority="high" />
           </div>
           <div class="cover-card"><img src="assets/sabor-sin-culpa-portada.jpg" alt="Portada del libro Sabor sin Culpa: Recetas saludables para disfrutar cada bocado" /></div>
-          <div class="hero-note"><span class="note-flower" aria-hidden="true">✦</span><span>Ideas flexibles para cocinar con calma y confianza.</span></div>
+          <div class="hero-note"><span class="note-flower" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M19.2 4.8C12 4.2 7 7.3 7 12.7c0 3.8 2.4 6.5 5.8 6.5 5.4 0 8.4-5.8 6.4-14.4Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M5 20c2.8-4.7 6.5-7.8 11.8-10.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span><span>Ideas flexibles para cocinar con calma y confianza.</span></div>
         </div>
       </div>
     </section>
@@ -340,30 +417,162 @@
           <span class="count-badge">6 secciones · 12 recetas cada una</span>
         </div>
         <div class="recipe-grid">
-          <article class="recipe-card">
-            <div class="recipe-card-top"><span class="recipe-symbol" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12h16M6 12a6 6 0 0 0 12 0M8 7.5c0-1.6 1.1-2.5 2.2-3M14 7.5c0-1.6 1.1-2.5 2.2-3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span><span class="recipe-count">01 · 12 recetas</span></div>
-            <h3>Desayunos que sostienen</h3><p>Avena cremosa de manzana · Pudín de chía y mango</p>
-          </article>
-          <article class="recipe-card">
-            <div class="recipe-card-top"><span class="recipe-symbol" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12.5h16a7.5 7.5 0 0 1-16 0ZM8 9c.1-1.4.8-2.4 1.7-3.2M14 9c.1-1.4.8-2.4 1.7-3.2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="recipe-count">02 · 12 recetas</span></div>
-            <h3>Comidas de cada día</h3><p>Bowl de garbanzos asados · Curry suave de verduras</p>
-          </article>
-          <article class="recipe-card">
-            <div class="recipe-card-top"><span class="recipe-symbol" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13h14a7 7 0 0 1-14 0ZM7 10h10M9 7h6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span><span class="recipe-count">03 · 12 recetas</span></div>
-            <h3>Cenas ligeras</h3><p>Crema de calabacín y puerro · Shakshuka verde</p>
-          </article>
-          <article class="recipe-card">
-            <div class="recipe-card-top"><span class="recipe-symbol" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="m7 4 10 16M5 7l3-3M16 20l3-3M4 12l4-1M16 13l4-1" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span><span class="recipe-count">04 · 12 recetas</span></div>
-            <h3>Snacks para compartir</h3><p>Hummus clásico · Garbanzos crujientes</p>
-          </article>
-          <article class="recipe-card">
-            <div class="recipe-card-top"><span class="recipe-symbol" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 16h14l-1.2-9H6.2L5 16ZM8 7V5m4 2V4m4 3V5M4 19h16" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="recipe-count">05 · 12 recetas</span></div>
-            <h3>Postres con equilibrio</h3><p>Crumble de frutos rojos · Brownie de frijol negro</p>
-          </article>
-          <article class="recipe-card">
-            <div class="recipe-card-top"><span class="recipe-symbol" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M9 3v8.5a4 4 0 1 0 6 0V3M7 3h4m2 0h4M12 15v3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="recipe-count">06 · 12 recetas</span></div>
-            <h3>Bebidas que refrescan</h3><p>Smoothie de piña y jengibre · Leche dorada</p>
-          </article>
+          <details class="recipe-card" data-recipe-card>
+            <summary class="recipe-summary" aria-controls="recipe-list-01" aria-expanded="false">
+              <div class="recipe-card-top">
+                <span class="recipe-symbol" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 12.5h15a7.5 7.5 0 0 1-15 0Z"/><path d="M8 9c0-1.4.7-2.2 1.5-3m3 3c0-1.4.7-2.2 1.5-3m.7-.5c1.7-.1 2.8.7 3.1 2.3-1.7.1-2.8-.7-3.1-2.3Z"/><path d="M9 16h6"/></svg></span>
+                <span class="recipe-count">01 · 12 recetas</span>
+              </div>
+              <h3>Desayunos que sostienen</h3>
+              <p>Avena cremosa de manzana · Pudín de chía y mango</p>
+              <span class="recipe-expand"><span class="expand-closed">Explorar las 12 recetas</span><span class="expand-open">Cerrar la lista</span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m7 10 5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </summary>
+            <div class="recipe-extra" id="recipe-list-01">
+              <p class="recipe-extra-title">Más ideas de esta sección del libro</p>
+              <ul class="recipe-extra-list">
+                  <li>Tostada de aguacate y huevo</li>
+                  <li>Yogur con frutos rojos</li>
+                  <li>Porridge de cacao y pera</li>
+                  <li>Tortilla verde de espinaca</li>
+                  <li>Panqueques de plátano</li>
+                  <li>Bowl cítrico de quinoa</li>
+                  <li>Muffins de zanahoria</li>
+                  <li>Revuelto de tomate y albahaca</li>
+                  <li>Granola de semillas</li>
+                  <li>Tostada de ricota y melocotón</li>
+              </ul>
+            </div>
+          </details>
+          <details class="recipe-card" data-recipe-card>
+            <summary class="recipe-summary" aria-controls="recipe-list-02" aria-expanded="false">
+              <div class="recipe-card-top">
+                <span class="recipe-symbol" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5h16a8 8 0 0 1-16 0Z"/><path d="M7 10h.01M10 8.5h.01M13 10h.01M16 8.5h.01" stroke-width="2.4"/><path d="M9 6.5c.8-1 1.8-1.5 3-1.5"/></svg></span>
+                <span class="recipe-count">02 · 12 recetas</span>
+              </div>
+              <h3>Comidas de cada día</h3>
+              <p>Bowl de garbanzos asados · Curry suave de verduras</p>
+              <span class="recipe-expand"><span class="expand-closed">Explorar las 12 recetas</span><span class="expand-open">Cerrar la lista</span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m7 10 5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </summary>
+            <div class="recipe-extra" id="recipe-list-02">
+              <p class="recipe-extra-title">Más ideas de esta sección del libro</p>
+              <ul class="recipe-extra-list">
+                  <li>Ensalada tibia de lentejas</li>
+                  <li>Arroz integral mediterráneo</li>
+                  <li>Pasta de tomate y alubias</li>
+                  <li>Tacos de pescado y col</li>
+                  <li>Cuscús de verduras asadas</li>
+                  <li>Sopa de tomate y lenteja roja</li>
+                  <li>Pollo al limón con brócoli</li>
+                  <li>Ensalada de atún y judías</li>
+                  <li>Berenjena rellena de quinoa</li>
+                  <li>Poke de salmón y edamame</li>
+              </ul>
+            </div>
+          </details>
+          <details class="recipe-card" data-recipe-card>
+            <summary class="recipe-summary" aria-controls="recipe-list-03" aria-expanded="false">
+              <div class="recipe-card-top">
+                <span class="recipe-symbol" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 13h15a7.5 7.5 0 0 1-15 0Z"/><path d="M7 10.2h10M9 6.5c0-1.3.6-2.1 1.4-2.8m2.5 2.8c0-1.3.6-2.1 1.4-2.8"/><path d="M8.5 16.5h7"/></svg></span>
+                <span class="recipe-count">03 · 12 recetas</span>
+              </div>
+              <h3>Cenas ligeras</h3>
+              <p>Crema de calabacín y puerro · Shakshuka verde</p>
+              <span class="recipe-expand"><span class="expand-closed">Explorar las 12 recetas</span><span class="expand-open">Cerrar la lista</span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m7 10 5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </summary>
+            <div class="recipe-extra" id="recipe-list-03">
+              <p class="recipe-extra-title">Más ideas de esta sección del libro</p>
+              <ul class="recipe-extra-list">
+                  <li>Frittata de verduras</li>
+                  <li>Merluza con tomate y aceitunas</li>
+                  <li>Sopa miso de setas</li>
+                  <li>Ensalada templada de boniato</li>
+                  <li>Calabacines rellenos</li>
+                  <li>Bacalao con garbanzos</li>
+                  <li>Tortilla de patata ligera</li>
+                  <li>Ratatouille rápido</li>
+                  <li>Polenta cremosa con setas</li>
+                  <li>Ensalada crujiente de tofu</li>
+              </ul>
+            </div>
+          </details>
+          <details class="recipe-card" data-recipe-card>
+            <summary class="recipe-summary" aria-controls="recipe-list-04" aria-expanded="false">
+              <div class="recipe-card-top">
+                <span class="recipe-symbol" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 12.5h15a7.5 7.5 0 0 1-15 0Z"/><circle cx="8.5" cy="10.2" r="1"/><circle cx="12" cy="9.3" r="1"/><circle cx="15.5" cy="10.2" r="1"/><path d="M9 16h6"/></svg></span>
+                <span class="recipe-count">04 · 12 recetas</span>
+              </div>
+              <h3>Snacks para compartir</h3>
+              <p>Hummus clásico · Garbanzos crujientes</p>
+              <span class="recipe-expand"><span class="expand-closed">Explorar las 12 recetas</span><span class="expand-open">Cerrar la lista</span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m7 10 5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </summary>
+            <div class="recipe-extra" id="recipe-list-04">
+              <p class="recipe-extra-title">Más ideas de esta sección del libro</p>
+              <ul class="recipe-extra-list">
+                  <li>Palomitas con pimentón</li>
+                  <li>Bastones de verduras</li>
+                  <li>Bolitas de dátil y cacao</li>
+                  <li>Tostadas de ricota</li>
+                  <li>Edamame con lima</li>
+                  <li>Dip de remolacha</li>
+                  <li>Manzana con crema de cacahuete</li>
+                  <li>Crackers de semillas</li>
+                  <li>Palitos de polenta</li>
+                  <li>Guacamole con pico fresco</li>
+              </ul>
+            </div>
+          </details>
+          <details class="recipe-card" data-recipe-card>
+            <summary class="recipe-summary" aria-controls="recipe-list-05" aria-expanded="false">
+              <div class="recipe-card-top">
+                <span class="recipe-symbol" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 16h14l-1.3-8H6.3L5 16Z"/><path d="m8 8 4-4 4 4M4.5 19h15"/><circle cx="12" cy="11.8" r="1.1"/><path d="M12 10.7V9"/></svg></span>
+                <span class="recipe-count">05 · 12 recetas</span>
+              </div>
+              <h3>Postres con equilibrio</h3>
+              <p>Crumble de frutos rojos · Brownie de frijol negro</p>
+              <span class="recipe-expand"><span class="expand-closed">Explorar las 12 recetas</span><span class="expand-open">Cerrar la lista</span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m7 10 5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </summary>
+            <div class="recipe-extra" id="recipe-list-05">
+              <p class="recipe-extra-title">Más ideas de esta sección del libro</p>
+              <ul class="recipe-extra-list">
+                  <li>Peras al horno</li>
+                  <li>Mousse de chocolate y aguacate</li>
+                  <li>Yogur helado de mango</li>
+                  <li>Galletas de avena y plátano</li>
+                  <li>Tarta rústica de ciruela</li>
+                  <li>Crema de limón</li>
+                  <li>Uvas asadas con ricota</li>
+                  <li>Compota de manzana</li>
+                  <li>Trufas de coco y cacao</li>
+                  <li>Melocotón con almendra</li>
+              </ul>
+            </div>
+          </details>
+          <details class="recipe-card" data-recipe-card>
+            <summary class="recipe-summary" aria-controls="recipe-list-06" aria-expanded="false">
+              <div class="recipe-card-top">
+                <span class="recipe-symbol" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 5h12l-1.4 15H7.4L6 5Z"/><path d="m9 3 7 13M8 10h8"/><path d="M9 17h6"/></svg></span>
+                <span class="recipe-count">06 · 12 recetas</span>
+              </div>
+              <h3>Bebidas que refrescan</h3>
+              <p>Smoothie de piña y jengibre · Leche dorada</p>
+              <span class="recipe-expand"><span class="expand-closed">Explorar las 12 recetas</span><span class="expand-open">Cerrar la lista</span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m7 10 5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </summary>
+            <div class="recipe-extra" id="recipe-list-06">
+              <p class="recipe-extra-title">Más ideas de esta sección del libro</p>
+              <ul class="recipe-extra-list">
+                  <li>Agua de pepino y lima</li>
+                  <li>Batido de frutos rojos</li>
+                  <li>Té frío de melocotón</li>
+                  <li>Licuado verde suave</li>
+                  <li>Chocolate caliente especiado</li>
+                  <li>Lassi de mango</li>
+                  <li>Café frío con avena</li>
+                  <li>Infusión de frutos y hierbas</li>
+                  <li>Tónica de granada</li>
+                  <li>Agua de sandía y albahaca</li>
+              </ul>
+            </div>
+          </details>
         </div>
         <div class="quote-band" style="margin-top: 36px;">
           <blockquote>“No persigas la perfección en el plato: busca el equilibrio, el sabor y la calma.”<cite>— Una idea para hoy, en Sabor sin Culpa</cite></blockquote>
@@ -425,13 +634,14 @@
         </div>
         <div class="purchase-action">
           <div class="price-line">US$14</div>
-          <a class="button" href="https://pay.hotmart.com/B108207858G?bid=1793346284700" target="_blank" rel="noopener noreferrer">Comprar en Hotmart <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-          <span>Checkout directo en Hotmart</span>
+          <a class="button" href="https://go.hotmart.com/B108207858G?dp=1" target="_blank" rel="noopener noreferrer">Comprar en Hotmart <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <span>Enlace promocional de Hotmart</span>
+          <a class="checkout-direct" href="https://pay.hotmart.com/B108207858G" target="_blank" rel="noopener noreferrer">¿Prefieres el checkout directo? Ábrelo aquí</a>
         </div>
       </div>
     </section>
 
-    <section class="section faq-section" aria-labelledby="faq-title">
+    <section class="section faq-section" id="faq" aria-labelledby="faq-title">
       <div class="wrap">
         <div class="intro centered">
           <span class="eyebrow">Antes de llevarlo a tu cocina</span>
@@ -442,7 +652,7 @@
           <details><summary>¿Qué incluye Sabor sin Culpa?</summary><p>Incluye 72 recetas distribuidas en seis secciones, un menú de 5 días, listas de despensa y de ingredientes frescos, medidas y sustituciones, guía de conservación, salsas rápidas y otros recursos prácticos para cocinar durante la semana.</p></details>
           <details><summary>¿Las recetas tienen que seguirse exactamente?</summary><p>El libro propone usar cada receta como punto de partida: puedes cambiar ingredientes según la temporada, lo que tengas en casa y tus preferencias. También incluye pautas de medidas y sustituciones.</p></details>
           <details><summary>¿Cuál es el precio del libro?</summary><p>El checkout directo de Hotmart muestra un precio de US$14. La plataforma puede aplicar impuestos si corresponden según tu ubicación.</p></details>
-          <details><summary>¿Dónde puedo comprarlo?</summary><p>El botón te lleva directamente al checkout de Hotmart para revisar el producto y completar la compra allí.</p></details>
+          <details><summary>¿Dónde puedo comprarlo?</summary><p>El botón principal abre la oferta de Hotmart. Si prefieres ir directamente al pago, <a href="https://pay.hotmart.com/B108207858G" target="_blank" rel="noopener noreferrer">abre aquí el checkout directo</a>.</p></details>
         </div>
       </div>
     </section>
@@ -452,8 +662,32 @@
         <span class="eyebrow">Sabor sin Culpa</span>
         <h2 id="final-title">Come rico. Siéntete bien.</h2>
         <p>72 recetas saludables y una guía para que cocinar cada día se sienta más sencillo, flexible y lleno de sabor.</p>
-        <a class="button" href="https://pay.hotmart.com/B108207858G?bid=1793346284700" target="_blank" rel="noopener noreferrer">Pagar ahora en Hotmart · US$14</a>
+        <a class="button" href="https://go.hotmart.com/B108207858G?dp=1" target="_blank" rel="noopener noreferrer">Pagar ahora en Hotmart · US$14</a>
         <small>Abre el checkout directo para completar tu pago. Impuestos podrían aplicarse según tu ubicación.</small>
+      </div>
+    </section>
+
+    <section class="social-section" id="contacto" aria-labelledby="social-title">
+      <div class="wrap social-content">
+        <div class="social-copy">
+          <span class="eyebrow">Sabor sin Culpa también en redes</span>
+          <h2 id="social-title">Sigamos compartiendo ideas ricas.</h2>
+          <p>Encuéntrame en mis redes o escríbeme si tienes una pregunta sobre el libro.</p>
+        </div>
+        <div class="social-links" aria-label="Redes sociales y correo">
+          <a class="social-link" href="https://www.instagram.com/sabordecasa_ofic/" target="_blank" rel="noopener noreferrer" aria-label="Instagram, @sabordecasa_ofic">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.7"/><circle cx="17.5" cy="6.8" r="1" fill="currentColor"/></svg><span>Instagram</span>
+          </a>
+          <a class="social-link" href="https://www.facebook.com/profile.php?id=61595657325347&amp;locale=es_LA" target="_blank" rel="noopener noreferrer" aria-label="Facebook, Sabor de Casa">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M14.1 20v-7.3h2.5l.4-2.9h-2.9V8c0-.8.3-1.4 1.5-1.4h1.5V4.1c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4v1.8H8.3v2.9h2.6V20h3.2Z" fill="currentColor"/></svg><span>Facebook</span>
+          </a>
+          <a class="social-link" href="https://www.tiktok.com/@sabordec" target="_blank" rel="noopener noreferrer" aria-label="TikTok, @sabordec">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M14 4v10.5a4.5 4.5 0 1 1-3.7-4.4v3.2a1.5 1.5 0 1 0 .7 1.3V4h3c.2 2.3 1.4 3.8 3.5 4.4v3.1A8 8 0 0 1 14 9.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg><span>TikTok</span>
+          </a>
+          <a class="social-link social-email" href="mailto:rain84497@gmail.com" aria-label="Enviar correo a rain84497@gmail.com">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5" stroke="currentColor" stroke-width="1.7"/><path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg><span>rain84497@gmail.com</span>
+          </a>
+        </div>
       </div>
     </section>
   </main>
@@ -467,34 +701,92 @@
 
   <script>
     (() => {
-      const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      if (prefersReducedMotion || !("IntersectionObserver" in window)) return;
+      const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const recipeCards = [...document.querySelectorAll("[data-recipe-card]")];
+      recipeCards.forEach(card => {
+        const summary = card.querySelector("summary");
+        const syncExpanded = () => summary.setAttribute("aria-expanded", String(card.open));
+        syncExpanded();
+        card.addEventListener("toggle", () => {
+          syncExpanded();
+          if (card.open) recipeCards.forEach(other => {
+            if (other !== card && other.open) other.open = false;
+          });
+        });
+      });
 
+      const faqItems = [...document.querySelectorAll(".faq-list details")];
+      faqItems.forEach(item => item.addEventListener("toggle", () => {
+        if (item.open) faqItems.forEach(other => {
+          if (other !== item && other.open) other.open = false;
+        });
+      }));
+
+      const mobileMenu = document.querySelector(".mobile-menu");
+      mobileMenu?.querySelectorAll("a").forEach(link => link.addEventListener("click", () => {
+        mobileMenu.open = false;
+      }));
+
+      const progress = document.querySelector(".reading-progress span");
+      const backToTop = document.querySelector(".back-to-top");
+      let scrollQueued = false;
+      const updateScrollUI = () => {
+        if (scrollQueued) return;
+        scrollQueued = true;
+        requestAnimationFrame(() => {
+          const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+          const progressPercent = scrollable > 0 ? Math.min(100, Math.max(0, window.scrollY / scrollable * 100)) : 0;
+          if (progress) progress.style.width = `${progressPercent}%`;
+          if (backToTop) backToTop.classList.toggle("is-visible", window.scrollY > 460);
+          scrollQueued = false;
+        });
+      };
+      window.addEventListener("scroll", updateScrollUI, { passive: true });
+      window.addEventListener("resize", updateScrollUI, { passive: true });
+      updateScrollUI();
+
+      if (!("IntersectionObserver" in window)) return;
+      const sectionLinks = [...document.querySelectorAll('.nav-links a[href^="#"], .mobile-menu-panel a[href^="#"]')];
+      const sections = [...document.querySelectorAll("main > section[id]")];
+      const navObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          const target = `#${entry.target.id}`;
+          sectionLinks.forEach(link => {
+            if (link.getAttribute("href") === target) link.setAttribute("aria-current", "location");
+            else link.removeAttribute("aria-current");
+          });
+        });
+      }, { rootMargin: "-25% 0px -65% 0px", threshold: 0 });
+      sections.forEach(section => navObserver.observe(section));
+
+      if (reducedMotion) return;
       const targets = document.querySelectorAll(
-        ".trust-item, .recipe-card, .quote-band, .included-photo, .included-copy, .ingredient-copy, .ingredient-item, .principle, .purchase-card > div, .faq-list details, .final-cta .wrap"
+        ".trust-item, .recipe-card, .quote-band, .included-photo, .included-copy, .ingredient-copy, .ingredient-item, .principle, .purchase-card > div, .faq-list details, .final-cta .wrap, .social-copy, .social-link"
       );
       if (!targets.length) return;
-
-      const observer = new IntersectionObserver((entries, activeObserver) => {
+      const revealObserver = new IntersectionObserver((entries, activeObserver) => {
         entries.forEach(({ isIntersecting, target }) => {
           if (!isIntersecting) return;
           target.classList.add("is-visible");
           activeObserver.unobserve(target);
         });
       }, { threshold: 0.14, rootMargin: "0px 0px -32px 0px" });
-
       targets.forEach((target, index) => {
         target.classList.add("reveal");
         target.style.setProperty("--reveal-delay", `${(index % 4) * 65}ms`);
       });
       document.documentElement.classList.add("motion-ready");
-      targets.forEach(target => observer.observe(target));
+      targets.forEach(target => revealObserver.observe(target));
     })();
   </script>
 
+  <a class="back-to-top" href="#inicio" aria-label="Volver al inicio">
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 19V5m-6 6 6-6 6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M17.5 5.5c-2.4-.2-4.3.8-5.2 2.8" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+  </a>
   <div class="mobile-buy" aria-label="Compra del libro">
     <span><strong>US$14</strong> en Hotmart</span>
-    <a class="button" href="https://pay.hotmart.com/B108207858G?bid=1793346284700" target="_blank" rel="noopener noreferrer">Pagar ahora</a>
+    <a class="button" href="https://go.hotmart.com/B108207858G?dp=1" target="_blank" rel="noopener noreferrer">Pagar ahora</a>
   </div>
 </body>
 </html>
